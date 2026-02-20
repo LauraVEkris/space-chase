@@ -430,6 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   lines:
   - testin'
+  - testtin' part 2. Gotta love some dialogue
   dialogueManager: {fileID: 171807842}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
