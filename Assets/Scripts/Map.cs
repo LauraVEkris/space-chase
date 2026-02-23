@@ -11,7 +11,6 @@ public class Map : MonoBehaviour
     public void ClickedPlanet(string target)
     {
         if (pause.PauseMenuState) { return; }
-        print("clicked planet");
         //scene switcher
         SceneManager.LoadScene(target);
     }

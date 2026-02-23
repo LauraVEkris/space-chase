@@ -547,7 +547,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1287252629}
+      - m_Target: {fileID: 738495674}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: ChangePauseMenu
         m_Mode: 1
@@ -724,6 +724,56 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &485774262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 485774264}
+  - component: {fileID: 485774263}
+  m_Layer: 0
+  m_Name: PlayerInputHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &485774263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485774262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56e35b8ed43b554cb8d6e424645fe63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInputHandler
+  playerControls: {fileID: -944628639613478452, guid: 407e90e31c3c9d74685a024f24d57952, type: 3}
+  actionMapName: Player
+  movement: Movement
+  rotation: Rotation
+  jump: Jump
+  sprint: Sprint
+--- !u!4 &485774264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485774262}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.33144, y: 0.5, z: -0.09277}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &549613978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,8 +1180,10 @@ GameObject:
   m_Component:
   - component: {fileID: 738495672}
   - component: {fileID: 738495671}
+  - component: {fileID: 738495673}
+  - component: {fileID: 738495674}
   m_Layer: 0
-  m_Name: ManagerObject
+  m_Name: GameManager
   m_TagString: ddol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1150,10 +1202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DDOL
   gameObjects:
-  - {fileID: 601490146}
   - {fileID: 692915547}
-  - {fileID: 1287252628}
   - {fileID: 2050468108}
+  - {fileID: 485774262}
 --- !u!4 &738495672
 Transform:
   m_ObjectHideFlags: 0
@@ -1169,6 +1220,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &738495673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738495670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7aa0ee7ebd09ce469130437418506cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  paused: 0
+  level: 0
+  gravity: 1
+--- !u!114 &738495674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738495670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e33eba433244a498ede0e21f56739c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
+  PauseMenuState: 0
+  menu: {fileID: 2050468108}
 --- !u!1 &887861190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,7 +1468,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1287252629}
+      - m_Target: {fileID: 738495674}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
@@ -1470,7 +1550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e485f1aab1c9140b790abc3a1265e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Map
-  pause: {fileID: 1287252629}
+  pause: {fileID: 738495674}
 --- !u!114 &1221710630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1563,7 +1643,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1287252630}
-  - component: {fileID: 1287252629}
   m_Layer: 0
   m_Name: ==UI==
   m_TagString: Untagged
@@ -1571,20 +1650,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1287252629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1287252628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6e33eba433244a498ede0e21f56739c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
-  PauseMenuState: 0
-  menu: {fileID: 2050468108}
 --- !u!4 &1287252630
 Transform:
   m_ObjectHideFlags: 0
@@ -1729,7 +1794,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1287252629}
+      - m_Target: {fileID: 738495674}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: StarMap
         m_Mode: 1
@@ -1894,6 +1959,7 @@ SceneRoots:
   - {fileID: 692915549}
   - {fileID: 601490149}
   - {fileID: 1298016045}
+  - {fileID: 485774264}
   - {fileID: 1287252630}
   - {fileID: 1221710633}
   - {fileID: 2050468112}

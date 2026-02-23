@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
+    GameManager gameManager;
     InputAction next;
 
     //Dialogue vars
@@ -18,6 +19,8 @@ public class DialogueManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameManager = FindFirstObjectByType<GameManager>();
+
         //connect action to go to next dialogue
         next = InputSystem.actions.FindAction("Click");
         next.performed += context => EndDialogue();
@@ -25,7 +28,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(int line)
     {
-        if (dialogueActive) { return; }
+        if (dialogueActive || gameManager.paused) { return; }
         currentDialogue = Instantiate(dialoguePrefab);
         currentDialogue.GetComponent<DialogueBox>().setText(dialogueLines[line]);
         dialogueActive = true;

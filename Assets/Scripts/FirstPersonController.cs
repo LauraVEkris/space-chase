@@ -1,3 +1,4 @@
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class FirstPersonController : MonoBehaviour
@@ -19,18 +20,28 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private PlayerInputHandler playerInputHandler;
 
+    [Header("Game Management")]
+    [SerializeField] private GameManager gameManager;
+
     private Vector3 currentMovement;
     private float verticalRotation;
     private float CurrentSpeed => walkSpeed * (playerInputHandler.SprintTriggered ? sprintMultiplier : 1);
 
     void Start()
     {
+        playerInputHandler = FindFirstObjectByType<PlayerInputHandler>();
+        gameManager = FindFirstObjectByType<GameManager>();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        //Set physics variables
+        gravityMultiplier = gameManager.gravity;
     }
 
     void Update()
     {
+        if (gameManager.paused) {return; }
         HandleMovement();
         HandleRotation();
     }
