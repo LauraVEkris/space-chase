@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 8931363690126821218}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,6 +218,7 @@ MonoBehaviour:
   characterController: {fileID: 3620606825913877091}
   mainCamera: {fileID: 3589568327005549745}
   playerInputHandler: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!1 &7564370976393624757
 GameObject:
   m_ObjectHideFlags: 0

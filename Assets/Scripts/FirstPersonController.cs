@@ -101,4 +101,10 @@ public class FirstPersonController : MonoBehaviour
         ApplyVerticalRotation(mouseYRotation);
     }
 
+    //gravity update for gravity zones
+    public void UpdateGravity(float tempGravity)
+    {
+        gravityMultiplier = tempGravity;
+    }
+
 }
