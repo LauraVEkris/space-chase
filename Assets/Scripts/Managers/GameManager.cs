@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,12 +8,15 @@ public class GameManager : MonoBehaviour
     //game management
     public bool paused = false;
     public int level = 0;
+    public bool finished = false;
 
     //physics vars
 
     //gravity keeps the base gravity, not current
     public float gravity = 1.0f;
     public bool firstZoneTouched = false;
+
+    [SerializeField] public string[] finishedLines;
 
     private void Start()
     {
@@ -23,5 +27,12 @@ public class GameManager : MonoBehaviour
     {
         dialogueManager.dialogueLines = Lines;
         dialogueManager.StartDialogue(0);
+    }
+
+    public void finishedGame()
+    {
+        dialogueManager.dialogueLines = finishedLines;
+        dialogueManager.StartDialogue(0);
+        finished = true;
     }
 }

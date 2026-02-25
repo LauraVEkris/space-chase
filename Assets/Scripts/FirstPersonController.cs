@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEditor.Build.Content;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class FirstPersonController : MonoBehaviour
 {
@@ -25,7 +26,8 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private TextMeshProUGUI gravText;
 
-    [Header("Dialogue Texts")]
+    [Header("Dialogue")]
+    [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] string[] zoneLines;
 
     private Vector3 currentMovement;
@@ -36,6 +38,7 @@ public class FirstPersonController : MonoBehaviour
     {
         playerInputHandler = FindFirstObjectByType<PlayerInputHandler>();
         gameManager = FindFirstObjectByType<GameManager>();
+        dialogueManager = FindFirstObjectByType<DialogueManager>();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -112,10 +115,18 @@ public class FirstPersonController : MonoBehaviour
     {
         gravityMultiplier = tempGravity;
         gravText.text = ("Gravity: " + tempGravity.ToString());
-        if (!gameManager.firstZoneTouched)
+        if (!gameManager.firstZoneTouched & !dialogueManager.dialogueActive)
         {
             gameManager.firstZoneTouched = true;
             gameManager.startDialogue(zoneLines);
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Finish" & !gameManager.finished)
+        {
+            gameManager.finishedGame();
         }
     }
 
