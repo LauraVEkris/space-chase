@@ -815,6 +815,10 @@ PrefabInstance:
       propertyPath: gravText
       value: 
       objectReference: {fileID: 1802931462}
+    - target: {fileID: 8931363690126821218, guid: a9776621166956e4a88dceb8a233c692, type: 3}
+      propertyPath: 'zoneLines.Array.data[0]'
+      value: These zones change the amount of gravity that affects you.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -7,8 +7,6 @@ public class Level1 : MonoBehaviour
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private GameManager gameManager;
 
-    //Awake to set physics vars
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

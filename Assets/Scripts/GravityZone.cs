@@ -20,7 +20,6 @@ public class GravityZone : MonoBehaviour
         {
             controller.UpdateGravity(tempGrav);
         }
-        Debug.Log("Entered zone");
     }
 
     public void OnTriggerExit(Collider other)
@@ -29,6 +28,5 @@ public class GravityZone : MonoBehaviour
         {
             controller.UpdateGravity(gameManager.gravity);
         }
-        Debug.Log("Exited zone");
     }
 }

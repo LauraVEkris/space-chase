@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public int level = 0;
 
     //physics vars
+
+    //gravity keeps the base gravity, not current
     public float gravity = 1.0f;
     public bool firstZoneTouched = false;
 
