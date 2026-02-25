@@ -13,7 +13,6 @@ public class GravityZone : MonoBehaviour
         controller = FindFirstObjectByType<FirstPersonController>();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     // “other” refers to the collider on the GameObject inside this trigger
     public void OnTriggerEnter(Collider other)
     {

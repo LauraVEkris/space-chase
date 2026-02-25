@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class level1 : MonoBehaviour
+public class Level1 : MonoBehaviour
 {
     [SerializeField] string[] lines;
     [SerializeField] DialogueManager dialogueManager;

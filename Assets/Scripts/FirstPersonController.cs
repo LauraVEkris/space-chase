@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEditor.Build.Content;
 using UnityEngine;
 
@@ -22,6 +23,7 @@ public class FirstPersonController : MonoBehaviour
 
     [Header("Game Management")]
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private TextMeshProUGUI gravText;
 
     private Vector3 currentMovement;
     private float verticalRotation;
@@ -37,6 +39,7 @@ public class FirstPersonController : MonoBehaviour
 
         //Set physics variables
         gravityMultiplier = gameManager.gravity;
+        gravText.text = ("Gravity: " + gravityMultiplier.ToString());
     }
 
     void Update()
@@ -105,6 +108,7 @@ public class FirstPersonController : MonoBehaviour
     public void UpdateGravity(float tempGravity)
     {
         gravityMultiplier = tempGravity;
+        gravText.text = ("Gravity: " + tempGravity.ToString());
     }
 
 }
