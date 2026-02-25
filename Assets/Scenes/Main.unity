@@ -1154,6 +1154,7 @@ MonoBehaviour:
   gameObjects:
   - {fileID: 692915547}
   - {fileID: 2050468108}
+  - {fileID: 1298016043}
 --- !u!4 &738495672
 Transform:
   m_ObjectHideFlags: 0
@@ -1184,6 +1185,7 @@ MonoBehaviour:
   paused: 0
   level: 0
   gravity: 1
+  firstZoneTouched: 0
 --- !u!114 &738495674
 MonoBehaviour:
   m_ObjectHideFlags: 0

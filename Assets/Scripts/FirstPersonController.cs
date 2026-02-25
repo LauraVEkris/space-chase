@@ -25,6 +25,9 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private TextMeshProUGUI gravText;
 
+    [Header("Dialogue Texts")]
+    [SerializeField] string[] zoneLines;
+
     private Vector3 currentMovement;
     private float verticalRotation;
     private float CurrentSpeed => walkSpeed * (playerInputHandler.SprintTriggered ? sprintMultiplier : 1);
@@ -109,6 +112,11 @@ public class FirstPersonController : MonoBehaviour
     {
         gravityMultiplier = tempGravity;
         gravText.text = ("Gravity: " + tempGravity.ToString());
+        if (!gameManager.firstZoneTouched)
+        {
+            gameManager.firstZoneTouched = true;
+            gameManager.startDialogue(zoneLines);
+        }
     }
 
 }

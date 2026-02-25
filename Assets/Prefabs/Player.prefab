@@ -219,6 +219,10 @@ MonoBehaviour:
   mainCamera: {fileID: 3589568327005549745}
   playerInputHandler: {fileID: 0}
   gameManager: {fileID: 0}
+  gravText: {fileID: 0}
+  zoneLines:
+  - These zones  change the amount of gravity that affects you.
+  - You might be able to use this to traverse this planet, good luck!
 --- !u!1 &7564370976393624757
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class Level1 : MonoBehaviour
 {
     [SerializeField] string[] lines;
-    [SerializeField] DialogueManager dialogueManager;
+    [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private GameManager gameManager;
 
     //Awake to set physics vars
@@ -12,6 +13,7 @@ public class Level1 : MonoBehaviour
     void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
+        dialogueManager = FindFirstObjectByType<DialogueManager>();
 
         dialogueManager.dialogueLines = lines;
         dialogueManager.StartDialogue(0);
