@@ -44,8 +44,8 @@ public class FirstPersonController : MonoBehaviour
         Cursor.visible = false;
 
         //Set physics variables
-        gravityMultiplier = gameManager.gravity;
-        gravText.text = ("Gravity: " + gravityMultiplier.ToString());
+        //gravityMultiplier = gameManager.gravity;
+        //gravText.text = ("Gravity: " + gravityMultiplier.ToString());
     }
 
     void Update()
