@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public string[] finishedLines;
 
+    //checkpoint vars
+    public float xPos;
+    public float yPos;
+    public float zPos;
+
     private void Start()
     {
         dialogueManager = FindFirstObjectByType<DialogueManager>();

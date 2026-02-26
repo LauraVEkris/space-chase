@@ -34,6 +34,8 @@ public class FirstPersonController : MonoBehaviour
     private float verticalRotation;
     private float CurrentSpeed => walkSpeed * (playerInputHandler.SprintTriggered ? sprintMultiplier : 1);
 
+    public bool dead = false;
+
     void Start()
     {
         playerInputHandler = FindFirstObjectByType<PlayerInputHandler>();
@@ -44,13 +46,13 @@ public class FirstPersonController : MonoBehaviour
         Cursor.visible = false;
 
         //Set physics variables
-        //gravityMultiplier = gameManager.gravity;
-        //gravText.text = ("Gravity: " + gravityMultiplier.ToString());
+        gravityMultiplier = gameManager.gravity;
+        if (gravText != null) { gravText.text = ("Gravity: " + gravityMultiplier.ToString()); }
     }
 
     void Update()
     {
-        if (gameManager.paused) {return; }
+        if (gameManager.paused || dead) {return; }
         HandleMovement();
         HandleRotation();
     }
@@ -129,5 +131,4 @@ public class FirstPersonController : MonoBehaviour
             gameManager.finishedGame();
         }
     }
-
 }

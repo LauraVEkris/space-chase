@@ -39,7 +39,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TimeOut()
     {
-        //yield on a new YieldInstruction that waits for 5 seconds.
+        //yield on a new YieldInstruction that waits for set amount of seconds.
         yield return new WaitForSeconds(0.2f);
         timedOut = false;
     }
@@ -60,6 +60,7 @@ public class DialogueManager : MonoBehaviour
             if (gameManager.finished)
             {
                 print("kill game");
+                Application.Quit();
             }
             }
     }
