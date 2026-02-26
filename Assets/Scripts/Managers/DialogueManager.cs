@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     GameObject currentDialogue;
     public string[] dialogueLines = null;
     int currentLine = 0;
-    bool dialogueActive = false;
+    public bool dialogueActive = false;
     bool timedOut = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,7 +39,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TimeOut()
     {
-        //yield on a new YieldInstruction that waits for 5 seconds.
+        //yield on a new YieldInstruction that waits for set amount of seconds.
         yield return new WaitForSeconds(0.2f);
         timedOut = false;
     }
@@ -55,6 +55,13 @@ public class DialogueManager : MonoBehaviour
             currentLine++;
             StartDialogue(currentLine);
         }
-        else { currentLine = 0;}
+        else {
+            currentLine = 0;
+            if (gameManager.finished)
+            {
+                print("kill game");
+                Application.Quit();
+            }
+            }
     }
 }

@@ -1,5 +1,6 @@
-using UnityEditor.Build.Content;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class FirstPersonController : MonoBehaviour
 {
@@ -22,26 +23,35 @@ public class FirstPersonController : MonoBehaviour
 
     [Header("Game Management")]
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private TextMeshProUGUI gravText;
+
+    [Header("Dialogue")]
+    [SerializeField] private DialogueManager dialogueManager;
+    [SerializeField] string[] zoneLines;
 
     private Vector3 currentMovement;
     private float verticalRotation;
     private float CurrentSpeed => walkSpeed * (playerInputHandler.SprintTriggered ? sprintMultiplier : 1);
 
+    public bool dead = false;
+
     void Start()
     {
         playerInputHandler = FindFirstObjectByType<PlayerInputHandler>();
         gameManager = FindFirstObjectByType<GameManager>();
+        dialogueManager = FindFirstObjectByType<DialogueManager>();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         //Set physics variables
         gravityMultiplier = gameManager.gravity;
+        if (gravText != null) { gravText.text = ("Gravity: " + gravityMultiplier.ToString()); }
     }
 
     void Update()
     {
-        if (gameManager.paused) {return; }
+        if (gameManager.paused || dead) {return; }
         HandleMovement();
         HandleRotation();
     }
@@ -101,4 +111,23 @@ public class FirstPersonController : MonoBehaviour
         ApplyVerticalRotation(mouseYRotation);
     }
 
+    //gravity update for gravity zones
+    public void UpdateGravity(float tempGravity)
+    {
+        gravityMultiplier = tempGravity;
+        gravText.text = ("Gravity: " + tempGravity.ToString());
+        if (!gameManager.firstZoneTouched & !dialogueManager.dialogueActive)
+        {
+            gameManager.firstZoneTouched = true;
+            gameManager.startDialogue(zoneLines);
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Finish" & !gameManager.finished)
+        {
+            gameManager.finishedGame();
+        }
+    }
 }

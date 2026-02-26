@@ -2,7 +2,6 @@ using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Rendering.CameraUI;
 
 public class Map : MonoBehaviour
 {
